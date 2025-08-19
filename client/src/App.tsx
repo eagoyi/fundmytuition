@@ -22,7 +22,7 @@ import RegistrationPage from './pages/RegistrationPage';
 // import VolunteerRegPage from './pages/VolunteerRegPage';
 // import NotFoundPage from './pages/NotFoundPage';
 
-function App() {
+const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

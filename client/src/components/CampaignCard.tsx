@@ -29,7 +29,7 @@ const ProjectDescription = styled.p`
   color: #6c757d;
 `;
 
-const ProgressBar = styled.div`
+const ProgressBar = styled.div<{ progress: number }>`
   width: 100%;
   height: 10px;
   background: #e9ecef;
@@ -52,7 +52,17 @@ const Stats = styled.ul`
   font-size: 0.8rem;
 `;
 
-const CampaignCard = ({
+interface Props {
+  image: string;
+  title: string;
+  description: string;
+  progress: number;
+  daysLeft: number;
+  backers: number;
+  funded: number;
+}
+
+const CampaignCard: React.FC<Props> = ({
   image,
   title,
   description,

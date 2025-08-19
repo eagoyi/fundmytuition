@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
@@ -26,7 +26,7 @@ app.use(
   })
 );
 
-app.all('/api/*', function(req, res, next) {
+app.all('/api/*', function(req: Request, res: Response, next: NextFunction) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
@@ -38,17 +38,17 @@ app.all('/api/*', function(req, res, next) {
 //   return res.render('default/index');
 // });
 
-app.get('/api', (req, res) => {
+app.get('/api', (req: Request, res: Response) => {
   return res.status(200).json({ msg: 'Welcome to the API.'});
 });
 
 // Handles any requests that don't match the ones above
-app.get('*', (req,res) =>{
+app.get('*', (req: Request, res: Response) =>{
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 
-app.get((err, req, res, next) => {
+app.get((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).send('Something is broken!')
 })
 
