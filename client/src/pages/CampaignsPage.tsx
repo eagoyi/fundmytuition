@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import CampaignCard from '../components/CampaignCard';
 import { fetchCampaigns } from '../store/features/campaigns/campaignsSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 const PageWrapper = styled.div`
   padding: 4rem 0;
@@ -23,23 +23,21 @@ const CampaignsGrid = styled.div`
   padding: 0 1rem;
 `;
 
-const CampaignsPage = () => {
-  const dispatch = useDispatch();
-  const campaigns = useSelector((state) => state.campaigns.items);
-  const campaignStatus = useSelector((state) => state.campaigns.status);
-  const error = useSelector((state) => state.campaigns.error);
+const CampaignsPage: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { items: campaigns, status, error } = useAppSelector((state) => state.campaigns);
 
   useEffect(() => {
-    if (campaignStatus === 'idle') {
+    if (status === 'idle') {
       dispatch(fetchCampaigns());
     }
-  }, [campaignStatus, dispatch]);
+  }, [status, dispatch]);
 
   let content;
 
-  if (campaignStatus === 'loading') {
+  if (status === 'loading') {
     content = <p>Loading...</p>;
-  } else if (campaignStatus === 'succeeded') {
+  } else if (status === 'succeeded') {
     content = (
       <CampaignsGrid>
         {campaigns.map((project) => (
@@ -47,7 +45,7 @@ const CampaignsPage = () => {
         ))}
       </CampaignsGrid>
     );
-  } else if (campaignStatus === 'failed') {
+  } else if (status === 'failed') {
     content = <p>{error}</p>;
   }
 
