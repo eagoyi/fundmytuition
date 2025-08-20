@@ -87,7 +87,9 @@ const Header: React.FC = () => {
 
   return (
     <HeaderWrapper>
-      <Logo to="/">FundMyTuition</Logo>
+      <Logo to="/">
+        <img src="/assets/images/logo.png" alt="FundMyTuition" />
+      </Logo>
       <Nav $isOpen={isMenuOpen}>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About FMT</NavLink>
