@@ -16,6 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Serve the static files from the React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
+// Serve the legacy images
+app.use('/assets/images', express.static(path.resolve(__dirname, '../public/assets/images')));
 
 app.use(
   cors({

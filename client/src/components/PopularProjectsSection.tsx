@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import CampaignCard from './CampaignCard';
 import { fetchCampaigns } from '../store/features/campaigns/campaignsSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 const SectionWrapper = styled.section`
   padding: 4rem 0;
@@ -24,31 +24,35 @@ const ProjectsGrid = styled.div`
   padding: 0 1rem;
 `;
 
-const PopularProjectsSection = () => {
-  const dispatch = useDispatch();
-  const campaigns = useSelector((state) => state.campaigns.items);
-  const campaignStatus = useSelector((state) => state.campaigns.status);
-  const error = useSelector((state) => state.campaigns.error);
+const PopularProjectsSection: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { items: campaigns, status, error } = useAppSelector((state) => state.campaigns);
 
   useEffect(() => {
-    if (campaignStatus === 'idle') {
+    if (status === 'idle') {
       dispatch(fetchCampaigns());
     }
-  }, [campaignStatus, dispatch]);
+  }, [status, dispatch]);
+
+  // Replace dummy data with data that uses real image paths
+  const projectsWithRealImages = campaigns.map((project, index) => ({
+      ...project,
+      image: `/assets/images/popular-${index + 1}.jpg`
+  }));
 
   let content;
 
-  if (campaignStatus === 'loading') {
+  if (status === 'loading') {
     content = <p>Loading...</p>;
-  } else if (campaignStatus === 'succeeded') {
+  } else if (status === 'succeeded') {
     content = (
       <ProjectsGrid>
-        {campaigns.map((project) => (
+        {projectsWithRealImages.map((project) => (
           <CampaignCard key={project.id} {...project} />
         ))}
       </ProjectsGrid>
     );
-  } else if (campaignStatus === 'failed') {
+  } else if (status === 'failed') {
     content = <p>{error}</p>;
   }
 
