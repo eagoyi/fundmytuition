@@ -9,6 +9,6 @@ test('renders the app with the header', () => {
       <App />
     </Provider>
   );
-  const titleElement = screen.getByRole('heading', { name: /FundMyTuition/i, level: 1 });
+  const titleElement = screen.getByRole('link', { name: /FundMyTuition/i });
   expect(titleElement).toBeInTheDocument();
 });

@@ -16,14 +16,17 @@ const SliderWrapper = styled.div`
 const SlideContent = styled.div`
   text-align: center;
   color: #333;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1rem;
+  border-radius: 5px;
 `;
 
-const HeroSlider = () => {
+const HeroSlider: React.FC = () => {
   return (
     <SliderWrapper>
       <Carousel showThumbs={false} autoPlay infiniteLoop>
         <div>
-          <img src="https://via.placeholder.com/1200x500/A" alt="slide 1" />
+          <img src="/assets/images/slide-1.jpg" alt="slide 1" />
           <SlideContent className="legend">
             <h2>TUITION CAMPAIGN</h2>
             <h3>STUDENT</h3>
@@ -31,7 +34,7 @@ const HeroSlider = () => {
           </SlideContent>
         </div>
         <div>
-          <img src="https://via.placeholder.com/1200x500/B" alt="slide 2" />
+          <img src="/assets/images/slide-2.jpg" alt="slide 2" />
           <SlideContent className="legend">
             <h2>PROJECT CAMPAIGN</h2>
             <h3>EDUCATIONALIST</h3>
@@ -39,7 +42,7 @@ const HeroSlider = () => {
           </SlideContent>
         </div>
         <div>
-          <img src="https://via.placeholder.com/1200x500/C" alt="slide 3" />
+          <img src="/assets/images/slide-3.jpg" alt="slide 3" />
           <SlideContent className="legend">
             <h2>EVENTS</h2>
             <h3>EDUCATIONAL EVENTS</h3>
