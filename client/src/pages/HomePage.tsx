@@ -4,16 +4,17 @@ import PopularProjectsSection from '../components/PopularProjectsSection';
 import HeroSlider from '../components/HeroSlider';
 import EventsSection from '../components/EventsSection';
 import CallToActionSection from '../components/CallToActionSection';
+import { Container } from '../components/Grid';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
-    <div>
+    <Container>
       <HeroSlider />
       <WelcomeSection />
       <PopularProjectsSection />
       <EventsSection />
       <CallToActionSection />
-    </div>
+    </Container>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import SearchBar from './auth/SearchBar';
 import LoginDropdown from './auth/LoginDropdown';
 import SignupDropdown from './auth/SignupDropdown';
@@ -97,7 +96,7 @@ const Header: React.FC = () => {
         <NavLink to="/campaigns">Explore Campaigns</NavLink>
       </Nav>
       <HeaderActions>
-        <ActionButton onClick={() => setSearchOpen(!isSearchOpen)}><FaSearch /></ActionButton>
+        <ActionButton onClick={() => setSearchOpen(!isSearchOpen)}>Search</ActionButton>
         {isSearchOpen && <SearchBar />}
         <ActionButton onClick={toggleLogin}>Login</ActionButton>
         {isLoginOpen && <LoginDropdown />}
@@ -106,7 +105,7 @@ const Header: React.FC = () => {
         <Link to="/donate" className="btn btn-primary">Donate</Link>
       </HeaderActions>
       <MobileMenuIcon onClick={() => setMenuOpen(!isMenuOpen)}>
-        {isMenuOpen ? <FaTimes /> : <FaBars />}
+        {isMenuOpen ? 'Close' : 'Menu'}
       </MobileMenuIcon>
     </HeaderWrapper>
   );

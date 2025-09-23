@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaLinkedin, FaGoogle } from 'react-icons/fa';
 
 const DropdownWrapper = styled.div`
   position: absolute;
@@ -36,8 +35,8 @@ const LoginDropdown: React.FC = () => {
     return (
         <DropdownWrapper>
             <h3>Login</h3>
-            <SocialButton><FaLinkedin /> Login with LinkedIn</SocialButton>
-            <SocialButton><FaGoogle /> Login with Google</SocialButton>
+            <SocialButton>Login with LinkedIn</SocialButton>
+            <SocialButton>Login with Google</SocialButton>
             <hr />
             <Form>
                 <input type="email" placeholder="Your email" />

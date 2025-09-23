@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const fadeIn = keyframes`
   from {
@@ -65,14 +64,14 @@ const HeroSlider: React.FC = () => {
         renderArrowPrev={(onClickHandler, hasPrev, label) =>
             hasPrev && (
                 <Arrow onClick={onClickHandler} style={{ left: 15 }}>
-                    <FaChevronLeft />
+                    {'<'}
                 </Arrow>
             )
         }
         renderArrowNext={(onClickHandler, hasNext, label) =>
             hasNext && (
                 <Arrow onClick={onClickHandler} style={{ right: 15 }}>
-                    <FaChevronRight />
+                    {'>'}
                 </Arrow>
             )
         }

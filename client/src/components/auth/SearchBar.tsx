@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaSearch } from 'react-icons/fa';
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -28,7 +27,7 @@ const SearchBar: React.FC = () => {
     return (
         <SearchWrapper>
             <SearchInput type="text" placeholder="Search Here" />
-            <SearchButton type="submit"><FaSearch /></SearchButton>
+            <SearchButton type="submit">Search</SearchButton>
         </SearchWrapper>
     )
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FaUser, FaKeyboard, FaAddressCard, FaBullhorn, FaBullseye, FaGraduationCap } from 'react-icons/fa';
 
 const PageWrapper = styled.div`
   padding: 2rem 0;
@@ -80,32 +79,26 @@ const AboutPage: React.FC = () => {
                     <h2>FMT Campaign Process</h2>
                     <ProcessGrid>
                         <ProcessItem>
-                            <FaUser size={40} />
                             <h3>Register on FMT</h3>
                             <p>Register on FundMyTuition platform and fill all required details</p>
                         </ProcessItem>
                         <ProcessItem>
-                            <FaKeyboard size={40} />
                             <h3>Post Campaign</h3>
                             <p>Post should include needed Tuition amount and due date as appropriate</p>
                         </ProcessItem>
                         <ProcessItem>
-                            <FaAddressCard size={40} />
                             <h3>Verification</h3>
                             <p>Submit all required document for verification on FMT</p>
                         </ProcessItem>
                         <ProcessItem>
-                            <FaBullhorn size={40} />
                             <h3>Promote Campaign</h3>
                             <p>Use all available platform to promote your campaign</p>
                         </ProcessItem>
                         <ProcessItem>
-                            <FaBullseye size={40} />
                             <h3>Attain Goal</h3>
                             <p>Make sure you set attainable funding goals, campaign in bits to attain goals faster</p>
                         </ProcessItem>
                         <ProcessItem>
-                            <FaGraduationCap size={40} />
                             <h3>Pay Tuition</h3>
                             <p>Pay for tuition or any edu-funding requirement as appropriate</p>
                         </ProcessItem>

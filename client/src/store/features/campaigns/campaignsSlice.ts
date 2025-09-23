@@ -1,15 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-
-interface Campaign {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-  progress: number;
-  daysLeft: number;
-  backers: number;
-  funded: number;
-}
+import { campaigns, Campaign } from '../../../data/campaigns';
 
 interface CampaignsState {
   items: Campaign[];
@@ -23,24 +13,11 @@ const initialState: CampaignsState = {
   error: null,
 };
 
-const dummyProjects: Campaign[] = [
-  {
-    id: 1,
-    image: 'https://via.placeholder.com/300x200',
-    title: 'To save 100 students from dropping out of school',
-    description: 'help us save some student from dropping out of school, there parent and guidian can no longer fund them we need you to keep them in school',
-    progress: 53,
-    daysLeft: 12,
-    backers: 175,
-    funded: 7000,
-  },
-  // ... other projects
-];
-
 export const fetchCampaigns = createAsyncThunk(
   'campaigns/fetchCampaigns',
   async () => {
-    return new Promise<Campaign[]>((resolve) => setTimeout(() => resolve(dummyProjects), 500));
+    // Replace with a real API call
+    return new Promise<Campaign[]>((resolve) => setTimeout(() => resolve(campaigns), 500));
   }
 );
 
