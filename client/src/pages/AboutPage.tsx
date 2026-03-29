@@ -8,13 +8,24 @@ const PageWrapper = styled.div`
 `;
 
 const Section = styled.section`
-  padding: 2rem 0;
+  padding: 60px 0;
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+const Heading = styled.h2`
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 32px;
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 20px;
 `;
 
 const TwoColumnGrid = styled.div`
@@ -33,13 +44,44 @@ const Image = styled.img`
 `;
 
 const ProcessGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
 `;
 
 const ProcessItem = styled.div`
-    text-align: center;
+  text-align: center;
+  padding: 20px;
+
+  svg {
+    color: ${(props) => props.theme.colors.primary};
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+`;
+
+const Button = styled(Link)`
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: ${(props) => props.theme.colors.primary};
+  color: white;
+  border-radius: ${(props) => props.theme.radius.md};
+  font-weight: 600;
+  margin-top: 15px;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 const AboutPage: React.FC = () => {
@@ -55,7 +97,7 @@ const AboutPage: React.FC = () => {
                             <h2>Collaborates With Institution's Fin-Aid or Bursary!</h2>
                             <p>FundMyTuition is a global public benefit Organization, focused on education, intended to run in major zonal regions across the globe. We will be liaising with Institution's Financial Aid or Bursary to ensure adequate/appropriate disbursement of fundings</p>
                             <p>Our mission is to reduce the limitations, anxiety and hassles students are faced with when sourcing for their tuition or paying off their student loans as well as aid quality and innovative Education/Research</p>
-                            <Link to="/contact" className="btn btn-primary">Contact Us</Link>
+                            <Button to="/contact">Contact Us</Button>
                         </div>
                     </TwoColumnGrid>
                 </Container>
@@ -67,7 +109,7 @@ const AboutPage: React.FC = () => {
                             <h2>Campaign For Financial Aid</h2>
                             <p>On FundMyTuition you can campaign for funding for any of the following: Tuition Fund, Student Loan payment, Research, Community Education, Edu-projects, Institution, Mentorship, skill acquisition or any activity that promotes educational innovation</p>
                             <p>You Need Funding for any of the listed? You can source for funds through fundmytuition. The below listed process can accelerate your campaign and goal attainment</p>
-                            <Link to="/start" className="btn btn-primary">Start Campaign</Link>
+                            <Button to="/start">Start Campaign</Button>
                         </div>
                         <div>
                             <Image src="/assets/images/funder-3.jpg" alt="Funder" />
@@ -77,7 +119,7 @@ const AboutPage: React.FC = () => {
             </Section>
             <Section>
                 <Container>
-                    <h2>FMT Campaign Process</h2>
+                    <Heading>FMT Campaign Process</Heading>
                     <ProcessGrid>
                         <ProcessItem>
                             <FaUser size={40} />

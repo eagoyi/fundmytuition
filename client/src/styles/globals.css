@@ -1,0 +1,30 @@
+/* Global styles for FundMyTuition React App */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400');
+
+:root {
+  --primary: #224390;
+  --primary-hover: #224390e5;
+  --secondary: #606060;
+  --accent: #f0f0f0;
+  --text: #2a2b2d;
+  --text-muted: #606060;
+  --border: #ebebeb;
+  --background: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
