@@ -1,70 +1,246 @@
-# Getting Started with Create React App
+# FundMyTuition - React SPA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive React Single Page Application for FundMyTuition crowdfunding platform. This application provides a complete educational crowdfunding experience with campaign creation, discovery, and donation features.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Authentication
+- User registration and login with validation
+- Social login integration (LinkedIn, Google)
+- Redux-based auth state management
+- Secure token handling with HTTP-only cookies
 
-### `npm start`
+### Campaign Management
+- Create, view, and filter campaigns
+- Campaign progress tracking and funding visualization
+- Category-based filtering and sorting
+- Campaign detail pages with creator information
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### User Experience
+- Responsive design (mobile, tablet, desktop)
+- Hero slider with auto-play animations
+- Interactive forms with validation
+- Real-time error handling
+- Loading states and success messages
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Pages
+- **Home**: Hero slider with featured campaigns
+- **Campaigns**: Browse, filter, and search campaigns
+- **Campaign Detail**: Individual campaign page with funding progress
+- **About**: Platform mission and process information
+- **Student Form**: Create campaign
+- **Volunteer**: Support page and registration
+- **Contact**: Contact form
+- **Donate**: Donation gateway
+- **FAQs**: Frequently asked questions
+- **Privacy**: Privacy policy
+- **Student Profile**: User dashboard
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React 19.1.1**: Modern UI framework
+- **React Router DOM 6**: Client-side routing
+- **Redux Toolkit**: State management
+- **Styled Components**: Component-scoped CSS
+- **Axios**: API communication
+- **React Icons**: Icon library
+- **React Responsive Carousel**: Slider component
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+client/src/
+├── components/
+│   ├── auth/          # Login/Register modals
+│   ├── common/        # Header, Footer, Layout
+│   ├── sliders/       # Hero slider, carousels
+│   └── Layout.tsx
+├── pages/             # All page components
+├── store/
+│   ├── index.ts       # Redux store configuration
+│   └── slices/        # Auth, campaigns, user slices
+├── services/
+│   ├── api.ts         # Axios instance with interceptors
+│   ├── authService.ts # Auth API calls
+│   └── campaignService.ts # Campaign API calls
+├── hooks/
+│   ├── useAuth.ts     # Authentication hook
+│   ├── useCampaigns.ts # Campaign management hook
+│   └── useResponsive.ts # Responsive design hook
+├── styles/
+│   ├── GlobalStyle.tsx # Global styled-components
+│   ├── theme.ts       # Theme configuration
+│   └── globals.css    # Global CSS
+├── App.tsx            # Main app component with routing
+└── index.tsx          # Entry point
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
+- Node.js 14+ and npm/yarn
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Create a `.env` file based on `.env.example`:
+```bash
+cp .env.example .env
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Update the API URL in `.env` if needed:
+```
+REACT_APP_API_URL=http://localhost:5000/api
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Development
 
-## Learn More
+Start the development server:
+```bash
+npm start
+# or
+yarn start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The app will open at `http://localhost:3000`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Building
 
-### Code Splitting
+Create an optimized production build:
+```bash
+npm run build
+# or
+yarn build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The build folder is ready to be deployed. The Express backend serves the build files.
 
-### Analyzing the Bundle Size
+## API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The app expects the following API endpoints (already configured in Express backend):
 
-### Making a Progressive Web App
+### Authentication
+- `POST /api/auth/login` - User login
+- `POST /api/auth/register` - User registration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Campaigns
+- `GET /api/campaigns` - Get all campaigns
+- `GET /api/campaigns/:id` - Get campaign detail
+- `POST /api/campaigns` - Create campaign
+- `PUT /api/campaigns/:id` - Update campaign
+- `DELETE /api/campaigns/:id` - Delete campaign
 
-### Advanced Configuration
+## State Management
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The app uses Redux Toolkit with three main slices:
 
-### Deployment
+### Auth Slice
+- `isLoggedIn`: Boolean login state
+- `user`: User profile object
+- `loginModalOpen`: Modal visibility state
+- `registerModalOpen`: Modal visibility state
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Campaigns Slice
+- `campaigns`: All campaigns array
+- `filteredCampaigns`: Filtered campaigns
+- `selectedCampaign`: Currently viewed campaign
+- `loading`: Loading state
+- `error`: Error message
+- `filterCategory`: Active filter
 
-### `npm run build` fails to minify
+### User Slice
+- `profile`: User profile data
+- `loading`: Loading state
+- `error`: Error message
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Styling
+
+The app uses styled-components with a centralized theme system:
+
+- **Colors**: Primary (#224390), secondary (#606060), neutrals
+- **Typography**: Open Sans font family
+- **Breakpoints**: Mobile (480px), Tablet (768px), Desktop (1024px)
+- **Spacing**: Consistent spacing scale (xs: 4px to xxl: 48px)
+
+## Responsive Design
+
+- Mobile-first approach
+- Breakpoints at 480px (mobile), 768px (tablet), 1024px (desktop)
+- Flexbox and CSS Grid layouts
+- Responsive navigation with mobile menu toggle
+
+## Performance Optimizations
+
+- Code splitting with React.lazy
+- Image optimization
+- CSS-in-JS with styled-components for automatic critical CSS
+- Lazy loading of carousel images
+- Redux selector memoization
+
+## Security
+
+- JWT token handling with localStorage
+- API request interceptor for token injection
+- Response interceptor for token expiration handling
+- CORS configuration on backend
+- Input validation on all forms
+
+## Testing
+
+Run the test suite:
+```bash
+npm test
+# or
+yarn test
+```
+
+## Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Test thoroughly
+4. Submit a pull request
+
+## License
+
+MIT
+
+## Support
+
+For issues or questions, please contact support@fundmytuition.com
+
+## Deployment
+
+The React app builds to a `build/` folder that the Express backend serves. Deploy both together:
+
+1. Build the React app: `npm run build`
+2. Start the Express server (it serves the React build)
+3. Deploy to Vercel or your hosting provider
+
+## Environment Variables
+
+### Development
+```
+REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_ENV=development
+```
+
+### Production
+```
+REACT_APP_API_URL=https://api.fundmytuition.com
+REACT_APP_ENV=production
+```
+
+## Migration from HTML
+
+This React app is a complete migration from the original HTML/jQuery application. See the [MIGRATION.md](../MIGRATION.md) file for details on:
+- Architecture changes
+- Technology replacements
+- API integration
+- Performance improvements
